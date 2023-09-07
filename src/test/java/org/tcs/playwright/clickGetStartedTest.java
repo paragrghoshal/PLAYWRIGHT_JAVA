@@ -2,6 +2,7 @@ package org.tcs.playwright;
 
 import org.tcs.playwright.baseClass.BaseTest;
 import org.tcs.playwright.pageObjects.LandingPage;
+import org.tcs.playwright.utility.UtilityClass;
 import org.testng.annotations.Test;
 
 
@@ -15,5 +16,7 @@ public class clickGetStartedTest extends BaseTest
         LandingPage landingPage = new LandingPage(getPage());
         landingPage.assertTitle();
         landingPage.clickGenStartedButton();
-    }
+        UtilityClass.getScreenshot(getPage());
+        
+    }    
 }
