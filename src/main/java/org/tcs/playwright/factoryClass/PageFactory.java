@@ -16,10 +16,10 @@ public class PageFactory {
         playwright = Playwright.create();
         switch (browserName.toLowerCase()) {
             case "chromium":
-                browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(!true));
+                browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(true));
                 break;
             case "firefox":
-                browser = playwright.firefox().launch(new BrowserType.LaunchOptions().setHeadless(!true));
+                browser = playwright.firefox().launch(new BrowserType.LaunchOptions().setHeadless(true));
                 break;
             default:
                 System.out.println("Please pass the right browser name...");
