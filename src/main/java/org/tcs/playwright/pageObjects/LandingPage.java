@@ -5,7 +5,6 @@ import java.util.regex.Pattern;
 import org.tcs.playwright.baseClass.BasePageObject;
 
 import com.microsoft.playwright.Page;
-import com.relevantcodes.extentreports.ExtentTest;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
