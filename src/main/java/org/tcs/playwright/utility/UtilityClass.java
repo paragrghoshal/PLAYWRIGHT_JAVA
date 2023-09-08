@@ -8,12 +8,14 @@ import com.microsoft.playwright.Page;
 
 public class UtilityClass {
 
-    public static String getdateTimeStamp(){
-        String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+    public String getdateTimeStamp(){
+        String timeStamp = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date());
         return timeStamp;
     }
-    public static void getScreenshot(Page page){
-        page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("./Screens/screenshot-"+getdateTimeStamp()+ ".png")));
+    public String getScreenshot(Page page){
+        String fileName = "screenshot-"+getdateTimeStamp()+ ".png";
+        page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("./Screens/"+fileName)));
+        return (Paths.get("./Screens/"+fileName).toAbsolutePath()).toString();
     }
     
 }
