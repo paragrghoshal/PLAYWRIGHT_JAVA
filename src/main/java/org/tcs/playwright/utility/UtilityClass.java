@@ -15,8 +15,9 @@ public class UtilityClass {
     public String getScreenshot(Page page){
         String pathValue = System.getProperty("user.dir")+"/reports/screens/";
         String fileName = "screenshot-"+getdateTimeStamp()+ ".png";
-        page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get(pathValue+fileName)));
-        return (Paths.get("./Screens/"+fileName).toAbsolutePath()).toString();
+        String filePath = pathValue + fileName;
+        page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get(filePath)));
+        return (Paths.get(filePath).toAbsolutePath()).toString();
     }
     
 }

@@ -26,6 +26,7 @@ public static ExtentReports extent;
     public static ExtentReports createInstance() {
         String fileName = System.getProperty("user.dir")+"/reports/ExtentReportResults.html";
         extent = new ExtentReports(fileName, true);
+        
         //ExtentSparkReporter htmlReporter = new ExtentSparkReporter(fileName);
         // //htmlReporter.config().setTestViewChartLocation(ChartLocation.BOTTOM);
         // //htmlReporter.config().setChartVisibilityOnOpen(true);
