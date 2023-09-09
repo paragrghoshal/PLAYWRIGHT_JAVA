@@ -15,27 +15,23 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
-
+  test:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout code  
+      uses: actions/checkout@v3
     - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
         java-version: '17'
         distribution: 'temurin'
-        cache: maven
-  test:
-    needs: build
-    runs-on:  ubuntu-latest
-    steps:     
-      - name: test with Maven
-        run: mvn clean test -Pdemo-test --file pom.xml
-      - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v3
-        with:
-          name: execution-report
-          path: reports
-          retention-days: 5  
+        cache: maven 
+    - name: test with Maven
+      run: mvn clean test -Pdemo-test --file pom.xml
+    - name: Upload Artifact
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: execution-report
+        path: reports
+        retention-days: 5  
