@@ -13,11 +13,12 @@ public class UtilityClass {
         return timeStamp;
     }
     public String getScreenshot(Page page){
-        String pathValue = System.getProperty("user.dir")+"/reports/screens/";
+        //String pathValue = System.getProperty("user.dir")+"/reports/screens/";
+        String pathValue = "./reports/screens/";
         String fileName = "screenshot-"+getdateTimeStamp()+ ".png";
-        String filePath = pathValue + fileName;
-        page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get(filePath)));
-        return (Paths.get(filePath).toAbsolutePath()).toString();
+        page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get(pathValue + fileName)));
+        //return (Paths.get(filePath).toAbsolutePath()).toString();
+        return ("./screens/"+fileName).toString();
     }
     
 }
