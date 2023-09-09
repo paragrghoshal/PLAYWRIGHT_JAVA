@@ -28,6 +28,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
   test:
+    needs: build
     runs-on:  ubuntu-latest
     steps:     
       - name: test with Maven
