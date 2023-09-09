@@ -29,3 +29,9 @@ jobs:
         cache: maven
     - name: test with Maven
       run: mvn clean test -Pdemo-test --file pom.xml
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v3
+      with:
+        name: execution-report
+        path: reports
+        retention-days: 5  
