@@ -29,6 +29,10 @@ public class ExtentTestManager {
 		return test;
 	}
 
+	public static ExtentReports getExtentReportsInstance(){
+		return extent;
+	}
+
     public static void writeToReport(ExtentTest test, LogStatus logStatus, Page page,String expectedString ,String actualString){
         test.log(logStatus,expectedString,test.addScreenCapture(utils.getScreenshot(page))+actualString);
     }

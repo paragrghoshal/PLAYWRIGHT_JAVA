@@ -6,17 +6,20 @@
 // import java.util.List;
 // import java.util.Map;
 
-// import org.openqa.selenium.TakesScreenshot;
-// import org.openqa.selenium.WebDriver;
 // import org.tcs.playwright.baseClass.BaseTest;
-// import org.tcs.playwright.utility.extentreports.ExtentManager;
 // import org.tcs.playwright.utility.extentreports.ExtentTestManager;
+// // import org.openqa.selenium.TakesScreenshot;
+// // import org.openqa.selenium.WebDriver;
+// // import org.tcs.playwright.baseClass.BaseTest;
+// // import org.tcs.playwright.utility.extentreports.ExtentManager;
+// // import org.tcs.playwright.utility.extentreports.ExtentTestManager;
 // import org.testng.IReporter;
 // import org.testng.IResultMap;
 // import org.testng.ISuite;
 // import org.testng.ISuiteResult;
 // import org.testng.ITestContext;
 // import org.testng.ITestListener;
+// // import org.testng.ITestListener;
 // import org.testng.ITestResult;
 // import org.testng.xml.XmlSuite;
 
@@ -24,14 +27,14 @@
 // import com.relevantcodes.extentreports.ExtentTest;
 // import com.relevantcodes.extentreports.LogStatus;
 
-// public class ExtentReporterTestNG  implements IReporter  {
+// public class ExtentReporterTestNG extends BaseTest  implements IReporter,ITestListener  {
 //     private ExtentReports extent;
  
 //     @Override
 //     public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites,
 //       String outputDirectory) {
-//         extent = new ExtentReports(outputDirectory + File.separator + "ExtentPARAG.html", true);
- 
+//         //extent = new ExtentReports(outputDirectory + File.separator + "ExtentPARAG.html", true);
+//         extent = ExtentTestManager.getExtentReportsInstance();
 //         for (ISuite suite : suites) {
 //             Map<String, ISuiteResult> result = suite.getResults();
  
@@ -45,7 +48,7 @@
 //         }
  
 //         extent.flush();
-//         extent.close();
+//         //extent.close();
 //     }
  
 //     private void buildTestNodes(IResultMap tests, LogStatus status) {
@@ -77,6 +80,10 @@
 //         Calendar calendar = Calendar.getInstance();
 //         calendar.setTimeInMillis(millis);
 //         return calendar.getTime();        
+//     }
+//     public void onTestStart​(ITestResult result){
+//         System.out.println("HHHHHHHHHHHHHHHHHHH");
+        
 //     }
     
 // }
