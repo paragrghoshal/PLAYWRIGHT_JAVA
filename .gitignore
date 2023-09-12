@@ -29,3 +29,5 @@ outputDir/
 **/Version.java
 **/bin/
 *.png
+*.zip
+node_module

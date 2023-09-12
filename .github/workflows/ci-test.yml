@@ -34,4 +34,19 @@ jobs:
       with:
         name: execution-report
         path: reports
-        retention-days: 5  
+        retention-days: 5
+    - name: Jira Reporting
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+    - name: Install dependencies
+      run: npm ci
+    - name: Run Typescript
+      run: npm run jira-upload
+      env:
+          ATLASSIAN_USERNAME: ${{ env.ATLASSIAN_USERNAME }}
+          ATLASSIAN_API_KEY: ${{ env.ATLASSIAN_API_KEY }}
+          JIRA_CLIENT_ID: ${{ env.JIRA_CLIENT_ID }}
+          JIRA_CLIENT_SECRET: ${{ env.JIRA_CLIENT_SECRET }}
+          SAUCE_USERNAME: ${{ env.SAUCE_USERNAME }}
+          SAUCE_ACCESS_KEY: ${{ env.SAUCE_ACCESS_KEY }}
