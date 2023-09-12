@@ -26,22 +26,22 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven 
-    - name: test with Maven
+    - name: Execute Maven Tests
       run: mvn clean test -Pdemo-test --file pom.xml
-    - name: Upload Artifact
+    - name: Upload Artifact to github
       if: always()
       uses: actions/upload-artifact@v3
       with:
         name: execution-report
         path: reports
         retention-days: 5
-    - name: Jira Reporting
+    - name: Setup Node
       uses: actions/setup-node@v3
       with:
         node-version: 18
     - name: Install dependencies
       run: npm ci
-    - name: Run Typescript
+    - name: Run Jira Integrationi Script
       run: npm run jira-upload
       env:
           ATLASSIAN_USERNAME: ${{ env.ATLASSIAN_USERNAME }}

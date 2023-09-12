@@ -30,4 +30,4 @@ outputDir/
 **/bin/
 *.png
 *.zip
-node_module
+node_modules
