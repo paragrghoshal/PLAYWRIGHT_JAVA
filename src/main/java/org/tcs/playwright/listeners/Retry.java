@@ -1,9 +1,7 @@
 package org.tcs.playwright.listeners;
 
 import org.testng.IRetryAnalyzer;
-import org.testng.ITestListener;
 import org.testng.ITestResult;
-import org.testng.TestNG;
 
 public class Retry implements IRetryAnalyzer {
    private static final int    maxTry = 3;

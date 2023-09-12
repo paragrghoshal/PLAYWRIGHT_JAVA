@@ -15,23 +15,23 @@ public class clickGetStartedTest extends BaseTest
 {
 
     @Test(retryAnalyzer = Retry.class)
-    public void shouldAnswerWithTrue()
+    public void TestOne()
     {
         launchApplication();
         LandingPage landingPage = new LandingPage(getPage());
         landingPage.assertTitle();
         landingPage.clickGenStartedButton();
-        //Assert.fail("FAILED HAI"); 
+        Assert.fail("FAILED HAI"); 
     }    
 
     @Test(retryAnalyzer = Retry.class)
-    public void shouldAnswerWithFalse()
+    public void TestTwo()
     {
         launchApplication();
-        ExtentTestManager.writeToReport(reporterTest, LogStatus.INFO,"This is not going to be fun");
+        ExtentTestManager.writeToReport(LogStatus.INFO,"This is not going to be fun");
         LandingPage landingPage = new LandingPage(getPage());
         landingPage.assertTitle();
-        ExtentTestManager.writeToReport(reporterTest, LogStatus.PASS, getPage(),"Step1", "PARAG GHOSHAL JEE");
+        ExtentTestManager.writeToReport(LogStatus.PASS, getPage(),"Step1", "PARAG GHOSHAL JEE");
         landingPage.clickGenStartedButton();        
     } 
 }

@@ -1,50 +1,51 @@
 package org.tcs.playwright.listeners;
 
+import org.tcs.playwright.utility.extentreports.ExtentTestManager;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-public class MyTestListener implements ITestListener{
+import com.relevantcodes.extentreports.LogStatus;
+
+public class MyTestListener implements ITestListener {
+   
 
 @Override
 public void onFinish(ITestContext contextFinish) {
-System.out.println("onFinish method finished");
 
 }
 
 @Override
 public void onStart(ITestContext contextStart) {
-System.out.println("onStart method started");
+
 }
 
 @Override
 public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-System.out.println("Method failed with certain success percentage"+ result.getName());
 
 }
 
 @Override
 public void onTestFailure(ITestResult result) {
-System.out.println("Method failed"+ result.getName());
-
+    String message = " is failed";
+    ExtentTestManager.writeToReport(LogStatus.FAIL,"Test " + result.getName() + message);
 }
 
 @Override
 public void onTestSkipped(ITestResult result) {
-System.out.println("Method skipped"+ result.getName());
-
+    String message = " is failed and will be re-executed.";
+    ExtentTestManager.writeToReport(LogStatus.SKIP,"Test " + result.getName() + message);
 }
 
 @Override
 public void onTestStart(ITestResult result) {
-System.out.println("Method started"+ result.getName());
-
+    ExtentTestManager.startTest(result.getName());
 }
 
 @Override
 public void onTestSuccess(ITestResult result) {
-System.out.println("Method passed"+ result.getName());
-
+    String message = " is passed.";
+    ExtentTestManager.writeToReport(LogStatus.PASS,"Test " + result.getName() + message);
 }
 
 

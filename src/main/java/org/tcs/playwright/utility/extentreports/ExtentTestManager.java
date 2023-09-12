@@ -33,16 +33,16 @@ public class ExtentTestManager {
 		return extent;
 	}
 
-    public static void writeToReport(ExtentTest test, LogStatus logStatus, Page page,String expectedString ,String actualString){
-        test.log(logStatus,expectedString,test.addScreenCapture(utils.getScreenshot(page))+actualString);
+    public static void writeToReport(LogStatus logStatus, Page page,String expectedString ,String actualString){
+        getTest().log(logStatus,expectedString,getTest().addScreenCapture(utils.getScreenshot(page))+actualString);
     }
 
-    public static void writeToReport(ExtentTest test, LogStatus logStatus, String expectedString ,String actualString){
-        test.log(logStatus,expectedString,actualString);
+    public static void writeToReport(LogStatus logStatus, String expectedString ,String actualString){
+        getTest().log(logStatus,expectedString,actualString);
     }
-
-	public static void writeToReport(ExtentTest test, LogStatus logStatus,String actualString){
-		writeToReport(test,logStatus,"",actualString);
+//ExtentTest test, 
+	public static void writeToReport(LogStatus logStatus,String actualString){
+		writeToReport(logStatus,"",actualString);
     }
     
 }

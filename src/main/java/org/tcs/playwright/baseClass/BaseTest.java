@@ -12,21 +12,20 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
+// import org.testng.annotations.Test;
 
 import com.microsoft.playwright.Page;
-import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
+// import com.relevantcodes.extentreports.ExtentReports;
+// import com.relevantcodes.extentreports.ExtentTest;
+// import com.relevantcodes.extentreports.LogStatus;
 
 //@Listeners(org.tcs.playwright.listeners.ExtentReporterTestNG.class)
-@Listeners(org.tcs.playwright.listeners.MyTestListener.class)
+@Listeners({org.tcs.playwright.listeners.MySuiteListener.class,org.tcs.playwright.listeners.MyTestListener.class})
+
 public class BaseTest {
     Page page;
     PageFactory pageFactory = new PageFactory();
     protected static ThreadLocal<Page> threadLocalPage = new ThreadLocal<>();
-    protected ExtentReports extentreports;
-    protected ExtentTest reporterTest;
     protected UtilityClass utils = new UtilityClass();
 
     @BeforeSuite
@@ -35,23 +34,17 @@ public class BaseTest {
 
     @AfterSuite
     public void endExtentReport(){
-     ExtentTestManager.endTest(); 
+     //ExtentTestManager.endTest(); 
     }
 
     @BeforeMethod(alwaysRun = true)
     public void setup(Method method) {
         page = pageFactory.getPage("chromium");
         threadLocalPage.set(page);
-        reporterTest = ExtentTestManager.startTest(method.getName());
     }
 
     @AfterMethod(alwaysRun = true)
     public void tearDown(ITestResult result) {
-    if(result.getStatus()==result.SUCCESS){
-        ExtentTestManager.writeToReport(reporterTest,LogStatus.PASS,"Test Passed");
-    } else if (result.getStatus()==result.FAILURE) {
-        ExtentTestManager.writeToReport(reporterTest,LogStatus.FAIL,"Test Failed: "+ result.getThrowable());
-    }
 
     }
 
