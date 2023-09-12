@@ -17,7 +17,6 @@ public class LandingPage extends BasePageObject{
     
     public void assertTitle(){
         assertThat(getPage()).hasTitle(Pattern.compile("Playwright"));
-        //System.out.println
     }
 
     public void clickGenStartedButton(){
