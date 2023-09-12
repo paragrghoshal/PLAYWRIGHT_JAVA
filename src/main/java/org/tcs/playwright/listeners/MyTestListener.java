@@ -28,27 +28,27 @@ public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
 @Override
 public void onTestFailure(ITestResult result) {
     String message = " is failed";
-    System.out.println("onTestFailure");
+    //System.out.println("onTestFailure");
     ExtentTestManager.writeToReport(LogStatus.FAIL,"Test " + result.getName() + message);
 }
 
 @Override
 public void onTestSkipped(ITestResult result) {
     String message = " is failed and will be re-executed.";
-     System.out.println("onTestSkip");
+    //System.out.println("onTestSkip");
     ExtentTestManager.writeToReport(LogStatus.SKIP,"Test " + result.getName() + message);
 }
 
 @Override
 public void onTestStart(ITestResult result) {
-     System.out.println("onTestStart");
+    //System.out.println("onTestStart");
     ExtentTestManager.startTest(result.getName());
 }
 
 @Override
 public void onTestSuccess(ITestResult result) {
     String message = " is passed.";
-     System.out.println("onTestSuccess");
+    //System.out.println("onTestSuccess");
     ExtentTestManager.writeToReport(LogStatus.PASS,"Test " + result.getName() + message);
 }
 

@@ -32,6 +32,6 @@ int i =1;
         landingPage.assertTitle();
         ExtentTestManager.writeToReport(LogStatus.PASS, getPage(),"Step1", "PARAG GHOSHAL JEE");
         landingPage.clickGenStartedButton(); 
-        Assert.assertTrue(true);       
+        Assert.assertTrue(false);       
     } 
 }
