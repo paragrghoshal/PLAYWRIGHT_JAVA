@@ -36,12 +36,15 @@ jobs:
         path: reports
         retention-days: 5
     - name: Setup Node
+      if: always()
       uses: actions/setup-node@v3
       with:
         node-version: 18
     - name: Install dependencies
+      if: always()
       run: npm ci
     - name: Run Jira Integrationi Script
+      if: always()
       run: npm run jira-upload
       env:
           ATLASSIAN_USERNAME: ${{ env.ATLASSIAN_USERNAME }}
