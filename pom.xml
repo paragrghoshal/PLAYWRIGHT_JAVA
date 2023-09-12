@@ -16,6 +16,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <test.source.directory>src/test/java</test.source.directory>
+    <test.class.directory>src/test/java</test.class.directory>
   </properties>
 
   <dependencies>
@@ -51,7 +53,7 @@
   </profiles>
 
   <build>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+    <!-- <pluginManagement>lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
         <plugin>
@@ -67,7 +69,7 @@
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.8.0</version>
         </plugin>
-        <plugin>
+        <!-- <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.22.1</version>
           <configuration>
@@ -75,6 +77,34 @@
               <suiteXMLFile>${suiteXMLFile}</suiteXMLFile>
             </suiteXmlFiles>
           </configuration>
+        </plugin> -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-failsafe-plugin</artifactId>
+          <version>3.1.2</version>
+          <configuration>
+            <testSourceDirectory>${test.source.directory}</testSourceDirectory>
+            <!-- <testClassesDirectory></testClassesDirectory> -->
+            <suiteXmlFiles>
+              <suiteXmlFile>${suiteXMLFile}</suiteXmlFile>
+            </suiteXmlFiles>
+            <skipTests>false</skipTests>
+            <skipITs>false</skipITs>
+            <includes>
+              <include>**/*IT.java</include>
+            </includes>
+          </configuration>
+          <executions>
+            <execution>
+              <!-- <id>failsafe-integration-tests</id>
+              <phase>integration-test</phase> -->
+                <goals>
+                    <goal>integration-test</goal>
+                    <goal>verify</goal>
+                </goals>
+            </execution>
+          </executions>
+
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
@@ -98,6 +128,6 @@
           <version>3.0.0</version>
         </plugin>
       </plugins>
-    </pluginManagement>
+    <!-- </pluginManagement> -->
   </build>
 </project>

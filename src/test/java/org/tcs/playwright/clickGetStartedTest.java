@@ -1,6 +1,6 @@
 package org.tcs.playwright;
 
-import static org.junit.Assert.fail;
+// import static org.junit.Assert.fail;
 
 import org.junit.Assert;
 import org.tcs.playwright.baseClass.BaseTest;
@@ -13,7 +13,7 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class clickGetStartedTest extends BaseTest
 {
-
+int i =1;
     @Test(retryAnalyzer = Retry.class)
     public void TestOne()
     {
@@ -21,7 +21,13 @@ public class clickGetStartedTest extends BaseTest
         LandingPage landingPage = new LandingPage(getPage());
         landingPage.assertTitle();
         landingPage.clickGenStartedButton();
-        Assert.fail("FAILED HAI"); 
+        
+        
+        if ( i<=1){
+         Assert.fail("FAILED HAI :"+i);
+        }
+        i++;
+        
     }    
 
     @Test(retryAnalyzer = Retry.class)
